@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>angular</artifactId>
+		<groupId>br.cnpq.angular</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+	<artifactId>angular-ear</artifactId>
+	<packaging>ear</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>br.cnpq.angular</groupId>
+			<artifactId>angular-base</artifactId>
+			<version>${project.version}</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>br.cnpq.angular</groupId>
+			<artifactId>angular-ejb</artifactId>
+			<version>${project.version}</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>br.cnpq.angular</groupId>
+			<artifactId>angular-web</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.8</version>
+				<configuration>
+					<finalName>angular</finalName>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<modules>
+						<webModule>
+							<groupId>br.cnpq.angular</groupId>
+							<artifactId>angular-web</artifactId>
+							<contextRoot>/angular</contextRoot>
+						</webModule>
+						<ejbModule>
+							<groupId>br.cnpq.angular</groupId>
+							<artifactId>angular-ejb</artifactId>
+						</ejbModule>
+						<jarModule>
+							<groupId>br.cnpq.angular</groupId>
+							<artifactId>angular-base</artifactId>
+							<includeInApplicationXml>true</includeInApplicationXml>
+						</jarModule>
+					</modules>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<title>Angular - CNPq</title>
+</head>
+<body ng-app ng-controller="userController" style="margin-left: 20px">
+<h2>Usuário</h2>
+
+	<div>
+
+		<form name="formUser" class="form">
+			<input type="hidden" value="" ng-model="user.id">
+			
+			Nome :<br /> 
+			<input type="text" required name="nome" ng-model="user.nome"> <br />
+			Sobrenome :<br /> 
+			<input type="text" required ng-model="user.sobreNome"> <br />
+			Idade :<br /> 
+			<input type="number" required  ng-model="user.idade"> <br />
+
+			<button ng-click="salvarUser(formUser)" class="btn btn-success dropdown-toggle">Salvar</button>
+			<button ng-click="salvarUser(formUser)" class="btn btn-primary dropdown-toggle" disabled="disabled">Alterar</button>
+			
+			
+			<table class="table table-striped" style="width : 40%">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Nome</th>
+						<th>Sobrenome</th>
+						<th>Idade</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="user in users">
+						<td>{{user.id}}</td>
+						<td>{{user.nome}}</td>
+						<td>{{user.sobreNome}}</td>
+						<td>{{user.idade}}</td>
+						<td>
+							<a  ng-click="edit(user)">
+		                  		<span class="label">Alterar</span>
+		                  	</a> |
+		                  	<a  ng-click="deleteUser(user)">
+		                  		<span class="label label-important">Remover</span>
+		                  	</a>
+	                  	
+							
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		
+		</form>
+		
+	</div>
+
+</body>
+<script type="text/javascript" src="js/jquery-min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/userController.js"></script>
+</html>
