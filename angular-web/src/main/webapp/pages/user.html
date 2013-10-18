@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<title>AngularJs</title>
+</head>
+<body ng-app ng-controller="userController" style="margin-left: 20px">
+<h2>User</h2>
+
+	<div>
+
+		<form class="form">
+			<input type="hidden" value="" ng-model="user.id">
+
+			Name : <br />
+				<input type="text" ng-model="user.name"> <br />
+			Login : <br />
+				<input type="text" ng-model="user.login"> <br />
+			Password : <br /> 
+				<input type="password" ng-model="user.password"> <br />
+
+			<button ng-click="postUser()" class="btn btn-success dropdown-toggle">Send user</button>
+			<button ng-click="putUser()" class="btn btn-primary dropdown-toggle" disabled="disabled">Edit user</button>
+		</form>
+		
+		<table class="table table-striped" style="width : 40%">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Login</th>
+					<th>Options</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="user in users">
+					<td>{{user.id}}</td>
+					<td>{{user.name}}</td>
+					<td>{{user.login}}</td>
+					<td>
+						<a href="#" ng-click="edit(user)">
+	                  		<span class="label">edit</span>
+	                  	</a> |
+	                  	<a href="#" ng-click="deleteUser(user)">
+	                  		<span class="label label-important">remover</span>
+	                  	</a>
+                  	
+						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+<script type="text/javascript" src="js/jquery-min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/userController.js"></script>
+</html>
